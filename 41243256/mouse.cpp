@@ -148,7 +148,7 @@ int mouse(ExMessage msg, int main_scenes,int cheater, int* player_passlevel)
                     else if (main_scenes == 0) { loading_animation();/*進度條動畫*/ main(); }
                 }
                 //菜單按鈕
-                else if (main_scenes == 2)
+                if (main_scenes == 2)
                 {
                     //初始化星期一
                     if (msg.x >= 170 && msg.x <= 170 + 92 && msg.y >= 0 && msg.y <= 0 + 600 && *player_passlevel >= 0)
