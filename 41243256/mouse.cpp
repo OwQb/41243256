@@ -11,6 +11,8 @@ int mouse(ExMessage msg, int main_scenes,int cheater, int* player_passlevel)
     //不斷獲取鼠標當前信息
     while (1) 
     {
+        //期末考通過彩蛋
+        if (main_scenes == 2 && *player_passlevel >= 6) { if (msg.x >= 195 && msg.x <= 170 + 435 && msg.y >= 0 && msg.y <= 0 + 600 || msg.x >= 665 && msg.x <= 640 + 125 && msg.y >= 290 && msg.y <= 300 + 200) { flashing_animation(msg); } }
         //peek為偷窺,偷窺一下鼠標當前使否有操作,以防信息丟失
         if (peekmessage(&msg, EM_MOUSE)) 
         {

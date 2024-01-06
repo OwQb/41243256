@@ -16,6 +16,7 @@ mciSendString("stop BGM", 0, 0, 0);//暫停撥放mp3
 
 ExMessage msg;//取鼠標信息
 IMAGE curriculum;//課表圖
+IMAGE flashing;//閃光
 struct Resource 
 {
     IMAGE bg[BG_NUMBER], im[IM_NUMBER];//圖片變數名
@@ -43,6 +44,7 @@ int main()
     memset(account, 0, 11);//初始化輸入的帳號
     memset(password, 0, 11);//初始化輸入的密碼
     system("cls");//清空螢幕,重製畫面
+    srand((unsigned)time(NULL));
 
     initgraph(800, 600);//繪製窗口大小
     loading_data(&res);//加載資料
@@ -195,6 +197,7 @@ int loading_data(struct Resource *res)
 {
     mciSendString("open BGM/Bgm-level.mp3 alias BGM", 0, 0, 0);//導入mp3檔(alias為修改調用檔案名稱)
     loadimage(&curriculum, "image/curriculum.png");//導入圖片
+    loadimage(&flashing, "image/flashing.png");//導入圖片
     for (int i = 0; i <= BG_NUMBER-1; i++)//用於省去載入多張圖片
     {
         char path[50] = { 0 };//清除前一個圖片路徑字串
@@ -539,14 +542,14 @@ int attack_button_inital(void)
 int main_menu_button(ExMessage msg, int button_size)
 {
     BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
-    if (msg.x >= 205 && msg.x <= 205 + (button_size * 85) + 80 && msg.y >= 0 && msg.y <= 0 + 600)
+    if (msg.x >= 170 && msg.x <= 170 + (button_size * 92) +92  && msg.y >= 0 && msg.y <= 0 + 600)
     {
         main_menu_button_fillrectangle_size(button_size);//設定菜單白色矩形遮住範圍,減少行數用
-        if(msg.x >= 205 && msg.x <= 205 + 80 && msg.y >= 0 && msg.y <= 0 + 600){ main_menu_button_redframe_size(0); }//設定菜單紅框
-        else if (msg.x >= 290 && msg.x <= 290 + 80 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(1); }//設定菜單紅框
-        else if (msg.x >= 375 && msg.x <= 375 + 80 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(2); }//設定菜單紅框
-        else if (msg.x >= 460 && msg.x <= 460 + 80 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(3); }//設定菜單紅框
-        else if (msg.x >= 545 && msg.x <= 545 + 80 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(4); }//設定菜單紅框
+        if(msg.x >= 170 && msg.x <= 170 + 92 && msg.y >= 0 && msg.y <= 0 + 600){ main_menu_button_redframe_size(0); }//設定菜單紅框
+        else if (msg.x >= 262 && msg.x <= 262 + 92 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(1); }//設定菜單紅框
+        else if (msg.x >= 354 && msg.x <= 354 + 92 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(2); }//設定菜單紅框
+        else if (msg.x >= 446 && msg.x <= 446 + 92 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(3); }//設定菜單紅框
+        else if (msg.x >= 538 && msg.x <= 538 + 92 && msg.y >= 0 && msg.y <= 0 + 600) { main_menu_button_redframe_size(4); }//設定菜單紅框
         FlushBatchDraw();//輸出繪圖緩衝區
     }
     else
@@ -569,6 +572,16 @@ int final_exam_button(ExMessage msg)
     {
         putimagePNG(640, 0, res.im + 33);
     }
+    return 0;
+}
+//*********************************************************
+//期末考通過彩蛋
+int flashing_animation(ExMessage msg)
+{
+    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
+    putimagePNG(msg.x-25, msg.y-25, &flashing);
+    FlushBatchDraw();//輸出繪圖緩衝區
+    EndBatchDraw();//結束繪圖緩衝區
     return 0;
 }
 //*********************************************************

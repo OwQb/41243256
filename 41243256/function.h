@@ -58,6 +58,7 @@ int final_exam_level(void);//期末考關卡
 
 int loading_animation(void);//加載動畫
 int animation(int, int);//過場動畫
+int flashing_animation(ExMessage);//過場動畫
 
 int me_attack(void);//我方攻擊結算
 int enemy_attack(void);//敵方方攻擊結算
