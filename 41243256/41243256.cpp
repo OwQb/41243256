@@ -109,7 +109,7 @@ int login_register(int login_register)
                 if (check_ture == 0) { break; } 
             }
             memset(check_account, 0, 50);//清空路徑
-            sprintf_s(check_account, "..\\41243256\\account\\%s.txt", account);//添加路徑
+            sprintf_s(check_account, "account\\%s.txt", account);//添加路徑
             if ((pfile = fopen(check_account, "r")) == NULL) { system("cls"); memset(account, 0, 10); memset(password, 0, 11); printf("找不到該帳號, 請重新輸入\n"); }
             else
             {
@@ -166,7 +166,7 @@ int login_register(int login_register)
                 if (check_ture == 0) { break; }
             }
             memset(check_account, 0, 50);//清空路徑
-            sprintf_s(check_account, "..\\41243256\\account\\%s.txt", account);//添加路徑
+            sprintf_s(check_account, "account\\%s.txt", account);//添加路徑
             if ((pfile = fopen(check_account, "r")) != NULL) { system("cls"); memset(account, 0, 11); memset(password, 0, 11); printf("已有%s帳號請重新註冊\n", account); }
             else if ((pfile = fopen(check_account, "w")) == NULL) { system("cls"); memset(account, 0, 11); memset(password, 0, 11); printf("發生嚴重錯誤,找不到account文件夾\n"); }
             else {//註冊時填入玩家初始信息
