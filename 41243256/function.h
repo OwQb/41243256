@@ -10,9 +10,9 @@
 #include<mmsystem.h>//mp3冀
 #pragma comment(lib,"Winmm.lib")//mp3冀
 #include"tools.h"//硓ΑㄧΑ
-#define im_number 38//瓜计秖
-#define bg_number 10//璉春计秖
-#define math_number 34//计厩そΑ计秖
+#define IM_NUMBER 38//瓜计秖
+#define BG_NUMBER 10//璉春计秖
+#define MATH_NUMBER 34//计厩そΑ计秖
 //***********************************************************
 int main(void);
 int Selectr_login_register(void);

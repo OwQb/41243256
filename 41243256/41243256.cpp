@@ -18,7 +18,7 @@ ExMessage msg;//取鼠標信息
 IMAGE curriculum;//課表圖
 struct Resource 
 {
-    IMAGE bg[bg_number], im[im_number];//圖片變數名
+    IMAGE bg[BG_NUMBER], im[IM_NUMBER];//圖片變數名
 }res;
 
 int main_scenes =0;//目前主場景
@@ -195,13 +195,13 @@ int loading_data(struct Resource *res)
 {
     mciSendString("open BGM/Bgm-level.mp3 alias BGM", 0, 0, 0);//導入mp3檔(alias為修改調用檔案名稱)
     loadimage(&curriculum, "image/curriculum.png");//導入圖片
-    for (int i = 0; i <= bg_number-1; i++)//用於省去載入多張圖片
+    for (int i = 0; i <= BG_NUMBER-1; i++)//用於省去載入多張圖片
     {
         char path[50] = { 0 };//清除前一個圖片路徑字串
         sprintf_s(path, "image/bg%d.png", i + 1);//sprintf_s將格式化字串儲存到緩衝區
         loadimage(res->bg + i, path, getwidth(), getheight());//(載入的圖片,圖片路徑字串,根據視窗大小改變圖片長寬)
     }
-    for (int i = 0; i <= im_number-1; i++)//用於省去載入多張圖片
+    for (int i = 0; i <= IM_NUMBER -1; i++)//用於省去載入多張圖片
     {
         char path[50] = { 0 };//清除前一個圖片路徑字串
         sprintf_s(path, "image/im%d.png", i + 1);//sprintf_s將格式化字串儲存到緩衝區

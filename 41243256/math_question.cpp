@@ -4,12 +4,12 @@ int run_onetime = 1;
 
 struct math_Resource
 {
-    IMAGE im_math[math_number];//圖片變數名
+    IMAGE im_math[MATH_NUMBER];//圖片變數名
 }res;
 
 int loading_math_data(struct math_Resource* res)
 {
-    for (int i = 0; i <= math_number - 1; i++)//用於省去載入多張圖片
+    for (int i = 0; i <= MATH_NUMBER - 1; i++)//用於省去載入多張圖片
     {
         char path[50] = { 0 };//清除前一個圖片路徑字串
         sprintf_s(path, "image/im_math%d.png", i + 1);//sprintf_s將格式化字串儲存到緩衝區
