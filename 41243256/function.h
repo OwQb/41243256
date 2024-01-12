@@ -9,34 +9,35 @@
 #include<graphics.h>//easyx標頭檔
 #include<mmsystem.h>//mp3播放
 #pragma comment(lib,"Winmm.lib")//mp3播放
-#include"tools.h"//透明格式函式
+#include"tools.h"//透明格式
 #define IM_NUMBER 38//圖片數量
 #define BG_NUMBER 10//背景數量
 #define MATH_NUMBER 34//數學公式數量
 //***********************************************************
-int main(void);
-int Selectr_login_register(void);
+//<遊戲資料和判斷>
+int main(void);//遊戲初始化
+int loading_data(struct Resource*);//加載資料
+int Selectr_login_register(void);//選擇登入或註冊
 int login_register(int);//登入或註冊
-int Sign_out_button(ExMessage);//登出按鈕
-int save_player_passlevel(void);
+int save_player_passlevel(void);//保存遊戲資料
 int mouse(ExMessage, int, int, int*);//取得鼠標操作信息
 int level_ABCD_button(int, int, int*);//判斷是否勝利
-int front_page(void);//首頁
-int loading_data(struct Resource*);//加載資料
+//***********************************************************
+//<按鈕動畫>
 int front_page_button(ExMessage);//首頁按鈕
+int Sign_out_button(ExMessage);//登出按鈕
 int main_menu_front_button(ExMessage);//返回首頁按鈕
 int main_menu_button(ExMessage, int);//主菜單按鈕
 int final_exam_button(ExMessage);//期末考按鈕
 int main_menu_button_fillrectangle_size(int);//設定菜單白色矩形遮住範圍,減少行數用
 int main_menu_button_redframe_size(int);//設定菜單紅框,減少行數用
 int attack_button(ExMessage);//攻擊按鈕
-int win(int);//玩家勝利
 int win_confirm_button(ExMessage);//玩家勝利按鈕
-int lose(void);//玩家失敗
 int lose_confirm_button(ExMessage);//玩家失敗按鈕
-
+//***********************************************************
+//<遊戲介面>
+int front_page(void);//首頁
 int inital_plot(void);//初始劇情
-
 int main_menu(void);//主菜單
 
 int linux_level(void);//linux關卡
@@ -55,15 +56,18 @@ int information2_level(void);//資導2關卡
 int calculator2_level(void);//計概2關卡
 int math2_level(void);//數學關卡
 int final_exam_level(void);//期末考關卡
-
+int win(int);//玩家勝利
+int lose(void);//玩家失敗
+//***********************************************************
+//<遊戲動畫>
 int loading_animation(void);//加載動畫
 int animation(int, int);//過場動畫
 int flashing_animation(ExMessage);//過場動畫
-
 int me_attack(void);//我方攻擊結算
 int enemy_attack(void);//敵方方攻擊結算
 int attack_button_inital(void);//初始攻擊按鈕畫面
-
+//***********************************************************
+//遊戲題庫
 int ABCD(void);//單純的輸出ABCD,減少行數用
 int question_options_coordinate(int);//題庫選項座標
 
@@ -146,3 +150,4 @@ int math_options_false2(int, int);//數學錯誤選項2
 int math_options_false3(int, int);//數學錯誤選項3
 
 int final_exam_question(void);//期末考題庫
+//***********************************************************
