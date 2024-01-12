@@ -521,102 +521,6 @@ int front_page_button(ExMessage msg)
     return 0;
 }
 //************************************************************************
-//攻擊按鈕
-int attack_button(ExMessage msg)
-{
-    setbkmode(TRANSPARENT);//設置文字背景色為透明
-    settextstyle(40, 0, "微軟正黑體");//(字高,字寬(預設隨輸出變化),"字體(要系統有的)")
-    settextcolor(WHITE);//字體顏色
-    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
-    setfillcolor(RGB(193, 205, 205));//設置矩形填充色(使用RGB)
-    if (msg.x >= 50 && msg.x <= 50 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
-    {
-        fillroundrect(50, 525, 150, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(90, 530, "A");//輸出文字(文字x,文字y,"文字")
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    else if (msg.x >= 250 && msg.x <= 250 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
-    {
-        fillroundrect(250, 525, 350, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(290, 530, "B");//輸出文字(文字x,文字y,"文字")
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    else if (msg.x >= 450 && msg.x <= 450 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
-    {
-        fillroundrect(450, 525, 550, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(490, 530, "C");//輸出文字(文字x,文字y,"文字")
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    else if (msg.x >= 650 && msg.x <= 650 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
-    {
-        fillroundrect(650, 525, 750, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(690, 530, "D");//輸出文字(文字x,文字y,"文字")
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    else
-    {
-        setfillcolor(RGB(131, 139, 139));//設置矩形填充色(使用RGB)
-        fillroundrect(50, 525, 150, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(90, 530, "A");//輸出文字(文字x,文字y,"文字")
-        fillroundrect(250, 525, 350, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(290, 530, "B");//輸出文字(文字x,文字y,"文字")
-        fillroundrect(450, 525, 550, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(490, 530, "C");//輸出文字(文字x,文字y,"文字")
-        fillroundrect(650, 525, 750, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
-        outtextxy(690, 530, "D");//輸出文字(文字x,文字y,"文字")
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    EndBatchDraw();//結束繪圖緩衝區
-    return 0;
-}
-//************************************************************************
-//<結算各類數據,並撥放血條動畫>
-//我方攻擊
-int me_attack(void)
-{
-    int save_me_a = 0;
-    if (rand() % 100 + 1 <= 50) { save_me_a = me_a*2; }//若暴擊則攻擊力*2
-    else { save_me_a = me_a; }//不若暴擊則不變
-    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
-    for (int i = enemy_HP;i >= enemy_HP - save_me_a;i --)
-    {
-        if (i < 0) { break; }//防止血條為負
-        setfillcolor(WHITE);//設置矩形填充色
-        fillroundrect(100, 50, 700, 60, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量敵
-        setfillcolor(RED);//設置矩形填充色
-        fillroundrect(100, 50, 100+i, 60, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量敵
-        Sleep(10);
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    EndBatchDraw();//結束繪圖緩衝區
-    enemy_HP -= save_me_a;//結算敵方血量
-    flushmessage();//清空鼠標當前信息以防信息暴衝
-    return 0;
-}
-//************************************************************************
-//敵方攻擊
-int enemy_attack(void)
-{
-    int save_enemy_a = 0;
-    if (rand() % 100 + 1 <= 50) { save_enemy_a = enemy_a * 2; }//若暴擊則攻擊力*2
-    else { save_enemy_a = enemy_a; }//不若暴擊則不變
-    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
-    for (int i = me_HP;i >= me_HP - save_enemy_a;i--)
-    {
-        if (i < 0) { break; }//防止血條為負
-        setfillcolor(WHITE);//設置矩形填充色
-        fillroundrect(0, 285, 800, 295, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量我
-        setfillcolor(BLUE);//設置矩形填充色
-        fillroundrect(0, 285, 0+i, 295, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量我
-        Sleep(10);
-        FlushBatchDraw();//輸出繪圖緩衝區
-    }
-    EndBatchDraw();//結束繪圖緩衝區
-    me_HP -= save_enemy_a;//結算我方血量
-    flushmessage();//清空鼠標當前信息以防信息暴衝
-    return 0;
-}
-//************************************************************************
 //win確定按鈕
 int win_confirm_button(ExMessage msg)
 {
@@ -717,6 +621,102 @@ int Sign_out_button(ExMessage msg)
         fillroundrect(10, 10, 110, 60, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
         outtextxy(35, 20, "登出");//輸出文字(文字x,文字y,"文字")
     }
+    return 0;
+}
+//************************************************************************
+//攻擊按鈕
+int attack_button(ExMessage msg)
+{
+    setbkmode(TRANSPARENT);//設置文字背景色為透明
+    settextstyle(40, 0, "微軟正黑體");//(字高,字寬(預設隨輸出變化),"字體(要系統有的)")
+    settextcolor(WHITE);//字體顏色
+    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
+    setfillcolor(RGB(193, 205, 205));//設置矩形填充色(使用RGB)
+    if (msg.x >= 50 && msg.x <= 50 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
+    {
+        fillroundrect(50, 525, 150, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(90, 530, "A");//輸出文字(文字x,文字y,"文字")
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    else if (msg.x >= 250 && msg.x <= 250 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
+    {
+        fillroundrect(250, 525, 350, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(290, 530, "B");//輸出文字(文字x,文字y,"文字")
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    else if (msg.x >= 450 && msg.x <= 450 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
+    {
+        fillroundrect(450, 525, 550, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(490, 530, "C");//輸出文字(文字x,文字y,"文字")
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    else if (msg.x >= 650 && msg.x <= 650 + 100 && msg.y >= 500 && msg.y <= 500 + 50)
+    {
+        fillroundrect(650, 525, 750, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(690, 530, "D");//輸出文字(文字x,文字y,"文字")
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    else
+    {
+        setfillcolor(RGB(131, 139, 139));//設置矩形填充色(使用RGB)
+        fillroundrect(50, 525, 150, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(90, 530, "A");//輸出文字(文字x,文字y,"文字")
+        fillroundrect(250, 525, 350, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(290, 530, "B");//輸出文字(文字x,文字y,"文字")
+        fillroundrect(450, 525, 550, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(490, 530, "C");//輸出文字(文字x,文字y,"文字")
+        fillroundrect(650, 525, 750, 575, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)
+        outtextxy(690, 530, "D");//輸出文字(文字x,文字y,"文字")
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    EndBatchDraw();//結束繪圖緩衝區
+    return 0;
+}
+//************************************************************************
+//<結算各類數據,並撥放血條動畫>
+//我方攻擊
+int me_attack(void)
+{
+    int save_me_a = 0;
+    if (rand() % 100 + 1 <= 50) { save_me_a = me_a*2; }//若暴擊則攻擊力*2
+    else { save_me_a = me_a; }//不若暴擊則不變
+    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
+    for (int i = enemy_HP;i >= enemy_HP - save_me_a;i --)
+    {
+        if (i < 0) { break; }//防止血條為負
+        setfillcolor(WHITE);//設置矩形填充色
+        fillroundrect(100, 50, 700, 60, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量敵
+        setfillcolor(RED);//設置矩形填充色
+        fillroundrect(100, 50, 100+i, 60, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量敵
+        Sleep(10);
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    EndBatchDraw();//結束繪圖緩衝區
+    enemy_HP -= save_me_a;//結算敵方血量
+    flushmessage();//清空鼠標當前信息以防信息暴衝
+    return 0;
+}
+//************************************************************************
+//敵方攻擊
+int enemy_attack(void)
+{
+    int save_enemy_a = 0;
+    if (rand() % 100 + 1 <= 50) { save_enemy_a = enemy_a * 2; }//若暴擊則攻擊力*2
+    else { save_enemy_a = enemy_a; }//不若暴擊則不變
+    BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
+    for (int i = me_HP;i >= me_HP - save_enemy_a;i--)
+    {
+        if (i < 0) { break; }//防止血條為負
+        setfillcolor(WHITE);//設置矩形填充色
+        fillroundrect(0, 285, 800, 295, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量我
+        setfillcolor(BLUE);//設置矩形填充色
+        fillroundrect(0, 285, 0+i, 295, 10, 10);//繪製圓角矩形(左,上,右,下,圓寬,圓高)血量我
+        Sleep(10);
+        FlushBatchDraw();//輸出繪圖緩衝區
+    }
+    EndBatchDraw();//結束繪圖緩衝區
+    me_HP -= save_enemy_a;//結算我方血量
+    flushmessage();//清空鼠標當前信息以防信息暴衝
     return 0;
 }
 //************************************************************************
