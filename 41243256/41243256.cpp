@@ -466,6 +466,33 @@ int final_exam_level(void)
     return 0;
 }
 //*********************************************************
+//win
+int win(int me_HP)
+{
+    //判斷是否為期末考
+    if (main_scenes == 18)
+    {
+        if (me_HP == 800) { putimagePNG(0, 0, res.bg + 7); }//我方滿血輸出100分
+        else if (me_HP >= 400) { putimagePNG(0, 0, res.bg + 8); }//我方半血輸出80分
+        else if (me_HP >= 100) { putimagePNG(0, 0, res.bg + 9); }//我方殘血輸出60分
+    }
+    else { putimagePNG(0, 0, res.bg + 3); }
+    main_scenes = -1;
+    mouse(msg, main_scenes, cheater, &player_passlevel);//請求鼠標偵測
+    return 0;
+}
+//*********************************************************
+//lose
+int lose(void)
+{
+    //判斷是否為期末考
+    if (main_scenes == 18) { putimagePNG(0, 0, res.bg + 6); }
+    else { putimagePNG(0, 0, res.bg + 4); }
+    main_scenes = 1 - main_scenes;
+    mouse(msg, main_scenes, cheater, &player_passlevel);//請求鼠標偵測
+    return 0;
+}
+//*********************************************************
 //<動畫區>
 //進度條動畫
 int loading_animation(void)
@@ -509,33 +536,6 @@ int animation(int im_1,int im_2)
     }
     EndBatchDraw();//結束繪圖緩衝區
     flushmessage();//清空鼠標當前信息以防信息暴衝
-    return 0;
-}
-//*********************************************************
-//win
-int win(int me_HP)
-{
-    //判斷是否為期末考
-    if (main_scenes == 18)
-    {
-        if (me_HP == 800) { putimagePNG(0, 0, res.bg + 7); }//我方滿血輸出100分
-        else if (me_HP >= 400) { putimagePNG(0, 0, res.bg + 8); }//我方半血輸出80分
-        else if (me_HP >= 100) { putimagePNG(0, 0, res.bg + 9); }//我方殘血輸出60分
-    }
-    else { putimagePNG(0, 0, res.bg + 3); }
-    main_scenes = -1;
-    mouse(msg, main_scenes, cheater, &player_passlevel);//請求鼠標偵測
-    return 0;
-}
-//*********************************************************
-//lose
-int lose(void)
-{
-    //判斷是否為期末考
-    if (main_scenes == 18) { putimagePNG(0, 0, res.bg + 6); }
-    else { putimagePNG(0, 0, res.bg + 4); }
-    main_scenes = 1 - main_scenes;
-    mouse(msg, main_scenes, cheater, &player_passlevel);//請求鼠標偵測
     return 0;
 }
 //*********************************************************
