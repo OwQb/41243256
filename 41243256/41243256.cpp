@@ -37,7 +37,7 @@ FILE* pfile;//文件位置
 //*********************************************************
 //<遊戲開始和初始化>
 //遊戲初始化
-int main()
+int main(void)
 {
     player_passlevel = 0; //初始化通關數
     cheater = 0;//預設為正常帳號
@@ -185,7 +185,7 @@ int login_register(int login_register)
 //*********************************************************
 //<遊戲資料>
 //保存遊戲進度
-int save_player_passlevel()
+int save_player_passlevel(void)
 {
     if((pfile = fopen(check_account, "r+")) == NULL){ system("cls"); printf("保存遊戲進度時發生嚴重錯誤,找不到文件,建議退出遊戲重新註冊帳號\n"); }
     fseek(pfile, check_password_Enter_how_much + 21, SEEK_SET); fputc(player_passlevel + 48,pfile);//移動讀寫頭,修改通關數
