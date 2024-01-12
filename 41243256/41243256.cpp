@@ -35,7 +35,7 @@ char check_passlevel;//儲存文件讀取通關數
 FILE* pfile;//文件位置
 
 //*********************************************************
-//<1.初始化各場景,2.各場景地過場動畫>
+//<遊戲開始和初始化>
 //遊戲初始化
 int main()
 {
@@ -183,6 +183,7 @@ int login_register(int login_register)
     return 0;
 }
 //*********************************************************
+//<遊戲資料>
 //保存遊戲進度
 int save_player_passlevel()
 {
@@ -213,6 +214,7 @@ int loading_data(struct Resource *res)
     return 0;
 }
 //*********************************************************
+//<頁面和關卡>
 //首頁
 int front_page(void)
 {
@@ -464,6 +466,7 @@ int final_exam_level(void)
     return 0;
 }
 //*********************************************************
+//<動畫區>
 //進度條動畫
 int loading_animation(void)
 {
@@ -538,6 +541,7 @@ int attack_button_inital(void)
     return 0;
 }
 //*********************************************************
+//<按鈕動畫區>
 //主菜單按鈕
 int main_menu_button(ExMessage msg, int button_size)
 {
