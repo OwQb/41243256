@@ -124,8 +124,8 @@ int mouse(ExMessage msg, int main_scenes,int cheater, int* player_passlevel)
                         me_HP = 800;//初始化關卡數據
                         me_a = 30;//初始化關卡數據
                         enemy_a = 100;//初始化關卡數據
-                        attack_button_inital();//場景初始化
-                        final_exam_question();
+                        attack_button_inital();//期末考場景初始化
+                        final_exam_question();//期末考隨機題庫
                         if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
                         final_exam_level();//期末考關卡
                     }
@@ -138,7 +138,7 @@ int mouse(ExMessage msg, int main_scenes,int cheater, int* player_passlevel)
                     me_HP = 800;//初始化關卡數據
                     me_a = 30;//初始化關卡數據
                     enemy_a = 100;//初始化關卡數據
-                    attack_button_inital();//場景初始化
+                    attack_button_inital();//期末考場景初始化
                     final_exam_question();//期末考隨機題庫
                     if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
                     final_exam_level();//期末考關卡
