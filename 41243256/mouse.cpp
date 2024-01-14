@@ -261,7 +261,7 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
     //星期一
     if (main_scenes == 3)
     {
-        if (enemy_HP <= 0) { if (*player_passlevel == 0) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時失敗
+        if (enemy_HP <= 0) { if (*player_passlevel == 0) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時獲勝
         else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
         answer = linux_question();//隨機linux題庫
         if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
@@ -298,7 +298,7 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
                 calculator_level();//計概關卡
             }
             //連贏三小關獲勝
-            else if (beat_enemy_number == 3) { if (*player_passlevel == 1) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時失敗
+            else if (beat_enemy_number == 3) { if (*player_passlevel == 1) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時獲勝
         }//當敵方血量為零時獲勝
         else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
         if (beat_enemy_number == 0) { answer = programming_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
@@ -350,7 +350,7 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
                 General_Education_level();//初始關卡
             }
             //連贏四小關獲勝
-            else if (beat_enemy_number == 4) { if (*player_passlevel == 2) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時失敗
+            else if (beat_enemy_number == 4) { if (*player_passlevel == 2) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時獲勝
         }//當敵方血量為零時獲勝
         else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
         if (beat_enemy_number == 0) { answer = internet_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
@@ -362,95 +362,95 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
     //星期四
     else if (main_scenes >= 11 && main_scenes <= 13)
     {
-    if (enemy_HP <= 0) {
-        beat_enemy_number++;//進入下一階段
-        //初始化國文關卡數據
-        if (beat_enemy_number == 1)
-        {
-            animation(24, 25);//國文動畫
-            enemy_HP = 600;//初始化關卡數據
-            me_HP = 800;//初始化關卡數據
-            me_a = 120;//初始化關卡數據
-            enemy_a = 100;//初始化關卡數據
-            attack_button_inital();//場景初始化
-            answer = CH_question();//國文隨機題庫
-            if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
-            CH_level();//初始關卡
-        }
-        //初始化社會實踐關卡數據
-        else if (beat_enemy_number == 2)
-        {
-            animation(27, 28);//動畫
-            enemy_HP = 600;//初始化關卡數據
-            me_HP = 800;//初始化關卡數據
-            me_a = 120;//初始化關卡數據
-            enemy_a = 100;//初始化關卡數據
-            attack_button_inital();//場景初始化
-            answer = social_practice_question();//社會實踐隨機題庫
-            if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
-            social_practice_level();//初始關卡
-        }
-        //連贏三小關獲勝
-        else if (beat_enemy_number == 3) { if (*player_passlevel == 3) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時失敗
-    }//當敵方血量為零時獲勝
-    else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
-    if (beat_enemy_number == 0) { answer = programming_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    else if (beat_enemy_number == 1) { answer = CH_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    else if (beat_enemy_number == 2) { answer = social_practice_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        if (enemy_HP <= 0) {
+            beat_enemy_number++;//進入下一階段
+            //初始化國文關卡數據
+            if (beat_enemy_number == 1)
+            {
+                animation(24, 25);//國文動畫
+                enemy_HP = 600;//初始化關卡數據
+                me_HP = 800;//初始化關卡數據
+                me_a = 120;//初始化關卡數據
+                enemy_a = 100;//初始化關卡數據
+                attack_button_inital();//場景初始化
+                answer = CH_question();//國文隨機題庫
+                if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
+                CH_level();//初始關卡
+            }
+            //初始化社會實踐關卡數據
+            else if (beat_enemy_number == 2)
+            {
+                animation(27, 28);//動畫
+                enemy_HP = 600;//初始化關卡數據
+                me_HP = 800;//初始化關卡數據
+                me_a = 120;//初始化關卡數據
+                enemy_a = 100;//初始化關卡數據
+                attack_button_inital();//場景初始化
+                answer = social_practice_question();//社會實踐隨機題庫
+                if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
+                social_practice_level();//初始關卡
+            }
+            //連贏三小關獲勝
+            else if (beat_enemy_number == 3) { if (*player_passlevel == 3) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時獲勝
+        }//當敵方血量為零時獲勝
+        else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
+        if (beat_enemy_number == 0) { answer = programming_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        else if (beat_enemy_number == 1) { answer = CH_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        else if (beat_enemy_number == 2) { answer = social_practice_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
     }
     //星期五
     else if (main_scenes >= 14 && main_scenes <= 17)
     {
-    if (enemy_HP <= 0) {
-        beat_enemy_number++;//進入下一階段
-        //初始化關卡數據
-        if (beat_enemy_number == 1)
-        {
-            animation(15, 16);//資導動畫
-            enemy_HP = 600;//初始化關卡數據
-            me_HP = 800;//初始化關卡數據
-            me_a = 120;//初始化關卡數據
-            enemy_a = 100;//初始化關卡數據
-            attack_button_inital();//場景初始化
-            answer = information_question();//資導隨機題庫
-            if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
-            information2_level();//初始關卡
+        if (enemy_HP <= 0) {
+            beat_enemy_number++;//進入下一階段
+            //初始化關卡數據
+            if (beat_enemy_number == 1)
+            {
+                animation(15, 16);//資導動畫
+                enemy_HP = 600;//初始化關卡數據
+                me_HP = 800;//初始化關卡數據
+                me_a = 120;//初始化關卡數據
+                enemy_a = 100;//初始化關卡數據
+                attack_button_inital();//場景初始化
+                answer = information_question();//資導隨機題庫
+                if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
+                information2_level();//初始關卡
+            }
+            //初始化關卡數據
+            else if (beat_enemy_number == 2)
+            {
+                animation(9, 10);//計概動畫
+                enemy_HP = 600;//初始化關卡數據
+                me_HP = 800;//初始化關卡數據
+                me_a = 60;//初始化關卡數據
+                me_a = 120;//初始化關卡數據
+                attack_button_inital();//場景初始化
+                answer = calculator_question();//計概隨機題庫
+                if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
+                calculator2_level();//初始關卡
+            }
+            //初始化關卡數據
+            else if (beat_enemy_number == 3)
+            {
+                animation(30, 31);//動畫
+                enemy_HP = 600;//初始化關卡數據
+                me_HP = 800;//初始化關卡數據
+                me_a = 60;//初始化關卡數據
+                me_a = 120;//初始化關卡數據
+                attack_button_inital();//場景初始化
+                answer = math_question();//隨機題庫
+                if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
+                math2_level();//初始教學
+            }
+            //連贏四小關獲勝
+            else if (beat_enemy_number == 4) { if (*player_passlevel == 4) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術,敵方血量為零時獲勝
+        }//當敵方血量為零時獲勝
+        else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
+        if (beat_enemy_number == 0) { answer = math_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        else if (beat_enemy_number == 1) { answer = information_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        else if (beat_enemy_number == 2) { answer = calculator_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
+        else if (beat_enemy_number == 3) { { answer = math_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
         }
-        //初始化關卡數據
-        else if (beat_enemy_number == 2)
-        {
-            animation(9, 10);//計概動畫
-            enemy_HP = 600;//初始化關卡數據
-            me_HP = 800;//初始化關卡數據
-            me_a = 60;//初始化關卡數據
-            me_a = 120;//初始化關卡數據
-            attack_button_inital();//場景初始化
-            answer = calculator_question();//計概隨機題庫
-            if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
-            calculator2_level();//初始關卡
-        }
-        //初始化關卡數據
-        else if (beat_enemy_number == 3)
-        {
-            animation(30, 31);//動畫
-            enemy_HP = 600;//初始化關卡數據
-            me_HP = 800;//初始化關卡數據
-            me_a = 60;//初始化關卡數據
-            me_a = 120;//初始化關卡數據
-            attack_button_inital();//場景初始化
-            answer = math_question();//隨機題庫
-            if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
-            math2_level();//初始教學
-        }
-        //連贏四小關獲勝
-        else if (beat_enemy_number == 4) { if (*player_passlevel == 4) { ++(*player_passlevel); save_player_passlevel(); } win(me_HP); }//初次獲勝增加通關術
-    }//當敵方血量為零時獲勝
-    else if (me_HP <= 0) { lose(); }//當我方血量為零時失敗
-    if (beat_enemy_number == 0) { answer = math_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    else if (beat_enemy_number == 1) { answer = information_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    else if (beat_enemy_number == 2) { answer = calculator_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    else if (beat_enemy_number == 3) { { answer = math_question(); if (cheater == 1) { system("cls"); printf("%d", answer); } }
-    }
     }
     //期末考
     else if (main_scenes == 18)
