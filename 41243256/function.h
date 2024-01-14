@@ -143,7 +143,7 @@ int social_practice_options_false3(int, int);//社會實踐錯誤選項3
 
 int loading_math_data(struct math_Resource*);//加載數學資料
 int math_question(void);//數學題庫
-int math_problem(void);//數學踐題目
+int math_problem(void);//數學題目
 int math_options_true(int, int);//數學正確選項
 int math_options_false1(int, int);//數學錯誤選項1
 int math_options_false2(int, int);//數學錯誤選項2
