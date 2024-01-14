@@ -517,7 +517,7 @@ int animation(int im_1,int im_2)
 {
     BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
     Sleep(1000);
-    for (int j = 800, i = -400; i <= 0, j >= 400; i += 10, j -= 10)//ubuntu圖標動畫01
+    for (int j = 800, i = -400; i <= 0, j >= 400; i += 10, j -= 10)//動畫01(關)
     {
         putimagePNG(i, 0, res.im + im_1);//輸出一張圖片(座標x,座標y,圖片變數名)
         putimagePNG(j, 0, res.im + im_2);//輸出一張圖片(座標x,座標y,圖片變數名)
@@ -525,10 +525,10 @@ int animation(int im_1,int im_2)
         FlushBatchDraw();//輸出繪圖緩衝區
     }
     Sleep(500);
-    for (int j = 400, i = 0; i >= -400, j <= 800; i -= 10, j += 10)//ubuntu圖標動畫02
+    for (int j = 400, i = 0; i >= -400, j <= 800; i -= 10, j += 10)//動畫02(開)
     {
         putimagePNG(0, 0, res.bg + 2);//輸出一張圖片(座標x,座標y,圖片變數名)
-        attack_button_inital();
+        attack_button_inital();//空關卡頁面
         putimagePNG(i, 0, res.im + im_1);//輸出一張圖片(座標x,座標y,圖片變數名)
         putimagePNG(j, 0, res.im + im_2);//輸出一張圖片(座標x,座標y,圖片變數名)
         Sleep(10);
