@@ -597,11 +597,11 @@ int final_exam_button(ExMessage msg)
 {
     if (msg.x >= 640 && msg.x <= 640 + 150 && msg.y >= 290 && msg.y <= 300 + 200)
     {
-        putimagePNG(640, 0, res.im + 34);
+        putimagePNG(640, 0, res.im + 34);//選取時
     }
     else
     {
-        putimagePNG(640, 0, res.im + 33);
+        putimagePNG(640, 0, res.im + 33);//未選取時
     }
     return 0;
 }
@@ -610,7 +610,7 @@ int final_exam_button(ExMessage msg)
 int flashing_animation(ExMessage msg)
 {
     BeginBatchDraw();//創建繪圖緩衝區(沒有繪圖緩衝區將導致卡頓)
-    putimagePNG(msg.x-25, msg.y-25, &flashing);
+    putimagePNG(msg.x-25, msg.y-25, &flashing);//設置閃光點為鼠標頭
     FlushBatchDraw();//輸出繪圖緩衝區
     EndBatchDraw();//結束繪圖緩衝區
     return 0;
