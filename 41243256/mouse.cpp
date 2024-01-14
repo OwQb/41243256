@@ -422,8 +422,8 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
                 animation(9, 10);//計概動畫
                 enemy_HP = 600;//初始化關卡數據
                 me_HP = 800;//初始化關卡數據
-                me_a = 60;//初始化關卡數據
                 me_a = 120;//初始化關卡數據
+                enemy_a = 100;//初始化關卡數據
                 attack_button_inital();//場景初始化
                 answer = calculator_question();//計概隨機題庫
                 if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
@@ -435,8 +435,8 @@ int level_ABCD_button(int main_scenes, int cheater, int* player_passlevel)
                 animation(30, 31);//動畫
                 enemy_HP = 600;//初始化關卡數據
                 me_HP = 800;//初始化關卡數據
-                me_a = 60;//初始化關卡數據
                 me_a = 120;//初始化關卡數據
+                enemy_a = 100;//初始化關卡數據
                 attack_button_inital();//場景初始化
                 answer = math_question();//隨機題庫
                 if (cheater == 1) { system("cls"); printf("%d", answer); }//若登入帳號為作弊帳號,顯示答案
