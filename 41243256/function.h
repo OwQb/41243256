@@ -67,7 +67,7 @@ int me_attack(void);//我方攻擊結算
 int enemy_attack(void);//敵方方攻擊結算
 int attack_button_inital(void);//初始攻擊按鈕畫面
 //***********************************************************
-//遊戲題庫
+//<遊戲題庫>
 int ABCD(void);//單純的輸出ABCD,減少行數用
 int question_options_coordinate(int);//題庫選項座標
 
